@@ -1,0 +1,34 @@
+<div class="form">
+	<form action="/pokemon" method="post">
+	<div class="form-item">
+		<label>
+		Name: <br>
+		<select name="pokemon[name]">
+			<% @pokemons.each do |pokemon| %>
+				<option value="<%= pokemon %>"><%= pokemon.upcase %></option>
+			<% end %>
+		</select>
+		</label>
+	</div>
+	<br>
+	<div class="form-item">
+		<label>
+		Pokemon TYPE:
+		<div class="type-wrapper">
+			<% @types.each do |type| %>
+				<label>
+					<input type="radio" <%= type == "Normal" ? "checked" : ""  %> name="pokemon[poke_type]" value="<%= type %>"></input>
+					<span class="type-icon type-<%= type.downcase %>"><%= type %></span>
+				</label>
+			<% end %>
+		</div>
+		</label>
+	</div>
+	<div class="form-item">
+		<label>
+		CP: <input type="text" name="pokemon[cp]">
+		</label>
+	</div>
+		<input class="remove" type="submit" value="Add Pokemon">
+	</form>
+</div>
